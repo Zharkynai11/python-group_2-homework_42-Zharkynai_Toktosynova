@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <h1>Пользователи</h1>
+    {% for user in object_list %}
+        <h2>{{ user.name }}</h2>
+        <p><a href="{% url "user_detail" user.pk %}">Читать дальше...</a></p>
+        <hr>
+    {% endfor %}
+{% endblock %}

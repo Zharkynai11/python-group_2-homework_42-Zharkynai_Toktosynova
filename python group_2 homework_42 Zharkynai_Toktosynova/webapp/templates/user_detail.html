@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}View{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <h1>Информация</h1>
+    <p>Имя:   {{object.name}} </p>
+    <p>Пароль:       {{object.password}}    </p>
+
+    <h2>Статьи:</h2>
+    {% for article in articles %}
+        {% if article.author == object %}
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.text }}</p>
+        </br>
+        </br>
+        {% endif %}
+    {% endfor %}
+
+    </br></br></br>
+
+    <a href="{% url 'update_user' object.pk %}"><input type="submit" value="Редактировать"/></a>
+    <a href="{% url 'delete_user' object.pk %}"><input type="submit" value="Удалить"/></a>
+{% endblock %}

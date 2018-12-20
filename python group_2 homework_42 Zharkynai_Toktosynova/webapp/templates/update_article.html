@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    Update
+{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url "create" %}">Добавить запись</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Редактировать информацию</h1>
+
+    <form action="{% url 'update' book.pk %}" method="post">
+        {% csrf_token %}
+
+        {% include 'form.html' %}
+
+    </form>
+{% endblock %}
+

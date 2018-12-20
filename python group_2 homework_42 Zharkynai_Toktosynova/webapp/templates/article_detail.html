@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}View{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <h1>Информация</h1>
+    <p>Заголовок:   {{object.title}} </p>
+    <p>Текст:       {{object.text}}    </p>
+    <p>Автор:       {{object.author.name}}     </p>
+
+    <h2>Комментарии</h2>
+    {% for comment in comments %}
+        {% if comment.article == object %}
+        <p>{{ comment.author.name }} :  {{comment.text}}</p>
+        <p>{{ comment.date }}</p>
+        </br>
+        </br>
+        {% endif %}
+    {% endfor %}
+
+    <h2>Оценки</h2>
+    {% for mark in marks %}
+        {% if mark.article == object %}
+        <p>{{ mark.author.name }} :  {{mark.value}}</p>
+        {% endif %}
+    {% endfor %}
+    </br></br></br>
+
+    <a href="{% url 'update_article' object.pk %}"><input type="submit" value="Редактировать"/></a>
+    <a href="{% url 'delete_article' object.pk %}"><input type="submit" value="Удалить"/></a>
+{% endblock %}

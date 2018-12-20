@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <h1>Статьи</h1>
+    {% for article in object_list %}
+        <h2>{{ article.title }}</h2>
+        <p><a href="{% url "article_detail" article.pk %}">Читать дальше...</a></p>
+        <hr>
+    {% endfor %}
+{% endblock %}

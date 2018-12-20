@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Create{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url "index" %}">Статьи</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Create product</h1>
+
+    <form action="/create" method="post">
+        {% csrf_token %}
+
+        <label>Имя:</label><br/>
+        <input type="text" name="name"/><br/>
+
+        <label>Фамилия:</label><br/>
+        <input type="text" name="surname"/><br/>
+
+        <label>Электронный адресс:</label><br/>
+        <input type="text" name="e_mail"> </input><br/>
+        <br/>
+
+        <label>Пароль:</label><br/>
+        <input type="text" name="password"> </input><br/>
+        <br/>
+
+        <label>Описание:</label><br/>
+        <textarea name="description"></textarea><br/>
+        <br/>
+
+        <label>Пол:</label><br/>
+        <input type="radio" name="gender" value="male" checked>Male</input>
+        <input type="radio" name="gender" value="female">Female</input>
+        <br/>
+        <br/>
+
+
+        <label>Город:</label><br/>
+        <select name="city">
+            {% for city in city_list %}
+                <option value={{city}}>{{ city }}</option>
+            {% endfor %}
+        </select>
+        <br/>
+
+        <label>Статус:</label><br/>
+        <input type="checkbox" checked>Активность<br/>
+        <br/>
+        <br/>
+
+        <input type="submit" value="Применить"/>
+
+    </form>
+{% endblock %}
